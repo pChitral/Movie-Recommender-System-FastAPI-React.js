@@ -9,7 +9,7 @@ def load_data():
     return movies, similarity
 
 def fetch_poster(movie_id):
-    url = "https://api.themoviedb.org/3/movie/{}?api_key=8265bd1679663a7ea12ac168da84d2e8&language=en-US".format(
+    url = "https://api.themoviedb.org/3/movie/{}?api_key=d07bdc3a6f9d0a18b637014e074af283&language=en-US".format(
         movie_id)
     data = requests.get(url)
     data = data.json()
