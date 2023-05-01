@@ -16,10 +16,6 @@ dist/
 build/
 *.egg
 
-# Jupyter Notebook files
-.ipynb_checkpoints/
-*.ipynb
-
 # System or IDE files
 .DS_Store
 .vscode/
