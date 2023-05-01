@@ -17,6 +17,7 @@ build/
 *.egg
 
 # System or IDE files
+similarity.pkl
 .DS_Store
 .vscode/
 .idea/
