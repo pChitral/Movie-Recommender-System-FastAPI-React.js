@@ -1,0 +1,34 @@
+# Compiled Python files
+*.pyc
+__pycache__/
+
+# Python environment
+venv/
+.venv/
+env/
+.env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Package dependencies
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+*.ipynb
+
+# System or IDE files
+.DS_Store
+.vscode/
+.idea/
+*.sublime-workspace
+*.pydevproject
+
+# Other
+*.bak
+*.swp
+*.swo
+*~
