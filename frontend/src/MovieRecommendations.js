@@ -102,10 +102,3 @@ function MovieRecommendations() {
 }
 
 export default MovieRecommendations;
-
-{
-  /* <li key={index}>
-              <img src={movie.posterUrl} alt={movie.name} />
-              <p>{movie.name}</p>
-            </li> */
-}
