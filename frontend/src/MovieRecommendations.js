@@ -8,8 +8,8 @@ import {
   Card,
   Text,
   Image,
-  Grid,
   SimpleGrid,
+  Title,
 } from "@mantine/core";
 
 function MovieRecommendations() {
@@ -54,27 +54,24 @@ function MovieRecommendations() {
 
   return (
     <div>
-      <h1>Recommended Movies</h1>
+      <Title order={4} align="center">
+        Recommended Movies
+      </Title>
       <form onSubmit={handleFormSubmit}>
-        <TextInput
-          type="text"
-          value={movieName}
-          onChange={handleInputChange}
-          label="Movie Name"
-          placeholder="Avatar"
-        />
-
         <Select
+          iconWidth="10"
           value={movieName}
+          searchable
           onChange={handleSelectChange}
           label="Movie Name"
           placeholder="Select a movie"
           data={movieList.map((movie) => ({ label: movie, value: movie }))}
         />
+        <br></br>
         <Button type="submit">Submit</Button>
       </form>
       {recommendedMovies.length > 0 ? (
-        <SimpleGrid cols={3} spacing={20}>
+        <SimpleGrid cols={3} spacing={10}>
           {recommendedMovies.map((movie, index) => (
             <Card
               key={index}
