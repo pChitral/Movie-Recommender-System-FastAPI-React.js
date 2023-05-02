@@ -31,3 +31,6 @@ build/
 *.swp
 *.swo
 *~
+
+# Ignoring Node Modules
+frontend/node_modules
