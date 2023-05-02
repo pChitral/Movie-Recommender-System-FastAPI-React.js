@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getMovieRecommendations } from "./api/api";
 import axios from "axios";
+import {
+  TextInput,
+  Button,
+  Select,
+  Card,
+  Text,
+  Image,
+  Grid,
+  SimpleGrid,
+} from "@mantine/core";
 
 function MovieRecommendations() {
   const [movieName, setMovieName] = useState("");
@@ -12,6 +22,7 @@ function MovieRecommendations() {
       try {
         const response = await axios.get("http://localhost:8000/movies");
         const movieList = JSON.parse(response.data);
+        console.log(movieList);
         setMovieList(movieList);
       } catch (error) {
         console.error(error);
@@ -37,37 +48,52 @@ function MovieRecommendations() {
     setMovieName(event.target.value);
   };
 
-  const handleSelectChange = (event) => {
-    setMovieName(event.target.value);
+  const handleSelectChange = (value) => {
+    setMovieName(value);
   };
 
   return (
     <div>
       <h1>Recommended Movies</h1>
       <form onSubmit={handleFormSubmit}>
-        <label>
-          Movie name:
-          <input type="text" value={movieName} onChange={handleInputChange} />
-        </label>
-        <select value={movieName} onChange={handleSelectChange}>
-          <option value="">--Select a movie--</option>
-          {movieList.map((movie, index) => (
-            <option value={movie} key={index}>
-              {movie}
-            </option>
-          ))}
-        </select>
-        <button type="submit">Submit</button>
+        <TextInput
+          type="text"
+          value={movieName}
+          onChange={handleInputChange}
+          label="Movie Name"
+          placeholder="Avatar"
+        />
+
+        <Select
+          value={movieName}
+          onChange={handleSelectChange}
+          label="Movie Name"
+          placeholder="Select a movie"
+          data={movieList.map((movie) => ({ label: movie, value: movie }))}
+        />
+        <Button type="submit">Submit</Button>
       </form>
       {recommendedMovies.length > 0 ? (
-        <ul>
+        <SimpleGrid cols={3} spacing={20}>
           {recommendedMovies.map((movie, index) => (
-            <li key={index}>
-              <img src={movie.posterUrl} alt={movie.name} />
-              <p>{movie.name}</p>
-            </li>
+            <Card
+              key={index}
+              shadow="sm"
+              padding="lg"
+              radius="md"
+              withBorder
+              w={300}
+            >
+              <Card.Section>
+                <Image src={movie.posterUrl} alt={movie.name} height={400} />
+              </Card.Section>
+
+              <Text size="sm" color="orange" fw={500}>
+                {movie.name}
+              </Text>
+            </Card>
           ))}
-        </ul>
+        </SimpleGrid>
       ) : (
         <p>No recommended movies to display.</p>
       )}
@@ -76,3 +102,10 @@ function MovieRecommendations() {
 }
 
 export default MovieRecommendations;
+
+{
+  /* <li key={index}>
+              <img src={movie.posterUrl} alt={movie.name} />
+              <p>{movie.name}</p>
+            </li> */
+}
