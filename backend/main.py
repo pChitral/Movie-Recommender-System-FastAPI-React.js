@@ -1,3 +1,4 @@
+import json
 import pickle
 import requests
 from fastapi import FastAPI
@@ -5,8 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-import json
-import pickle
 movies = pickle.load(open('movie_list.pkl', 'rb'))
 
 # Set up CORS
@@ -45,8 +44,8 @@ def fetch_poster(movie_id):
 def read_root():
     return "The app is working"
 
-@app.get("/movies")
 
+@app.get("/movies")
 def movies_list():
     return json.dumps(list(movies['title']))
 

@@ -10,9 +10,9 @@ function MovieRecommendations() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/movies");
-        console.log(response.data)
-        setMovieList(response.data);
+        const response = await axios.get("http://localhost:8000/movies");
+        const movieList = JSON.parse(response.data);
+        setMovieList(movieList);
       } catch (error) {
         console.error(error);
       }
