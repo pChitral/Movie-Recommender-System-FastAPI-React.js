@@ -1,9 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { getMovieRecommendations } from "./api/api";
+import axios from "axios";
 
 function MovieRecommendations() {
   const [movieName, setMovieName] = useState("");
+  const [movieList, setMovieList] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/movies");
+        console.log(response.data)
+        setMovieList(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -22,6 +37,10 @@ function MovieRecommendations() {
     setMovieName(event.target.value);
   };
 
+  const handleSelectChange = (event) => {
+    setMovieName(event.target.value);
+  };
+
   return (
     <div>
       <h1>Recommended Movies</h1>
@@ -30,6 +49,14 @@ function MovieRecommendations() {
           Movie name:
           <input type="text" value={movieName} onChange={handleInputChange} />
         </label>
+        <select value={movieName} onChange={handleSelectChange}>
+          <option value="">--Select a movie--</option>
+          {movieList.map((movie, index) => (
+            <option value={movie} key={index}>
+              {movie}
+            </option>
+          ))}
+        </select>
         <button type="submit">Submit</button>
       </form>
       {recommendedMovies.length > 0 ? (

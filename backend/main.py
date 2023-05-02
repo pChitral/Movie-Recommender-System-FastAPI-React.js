@@ -5,6 +5,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+import json
+import pickle
+movies = pickle.load(open('movie_list.pkl', 'rb'))
+
 # Set up CORS
 origins = [
     "http://localhost",
@@ -39,7 +43,12 @@ def fetch_poster(movie_id):
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return "The app is working"
+
+@app.get("/movies")
+
+def movies_list():
+    return json.dumps(list(movies['title']))
 
 
 @app.get("/recommend/{movie}")
