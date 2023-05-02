@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { getMovieRecommendations } from "./api/api";
 import axios from "axios";
 import {
-  TextInput,
   Button,
   Select,
   Card,
@@ -10,19 +9,22 @@ import {
   Image,
   SimpleGrid,
   Title,
+  Loader,
+  Box,
 } from "@mantine/core";
 
 function MovieRecommendations() {
   const [movieName, setMovieName] = useState("");
   const [movieList, setMovieList] = useState([]);
   const [recommendedMovies, setRecommendedMovies] = useState([]);
+  const [showTitle, setShowTitle] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get("http://localhost:8000/movies");
         const movieList = JSON.parse(response.data);
-        console.log(movieList);
         setMovieList(movieList);
       } catch (error) {
         console.error(error);
@@ -33,68 +35,120 @@ function MovieRecommendations() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    if (movieName) {
+    setLoading(true);
+    if (movieName !== "") {
       const data = await getMovieRecommendations(movieName);
       const recommendedMovies = data.recommended_movie_names.map(
-        (name, index) => {
-          return { name, posterUrl: data.recommended_movie_posters[index] };
-        }
+        (name, index) => ({
+          name,
+          posterUrl: data.recommended_movie_posters[index],
+        })
       );
       setRecommendedMovies(recommendedMovies);
+      setShowTitle(true);
+      setLoading(false);
+    } else {
+      setLoading(false);
     }
-  };
-
-  const handleInputChange = (event) => {
-    setMovieName(event.target.value);
   };
 
   const handleSelectChange = (value) => {
     setMovieName(value);
   };
+  const handleInputChange = (event) => {
+    setMovieName(event.target.value);
+  };
 
   return (
-    <div>
-      <Title order={4} align="center">
-        Recommended Movies
-      </Title>
-      <form onSubmit={handleFormSubmit}>
-        <Select
-          iconWidth="10"
-          value={movieName}
-          searchable
-          onChange={handleSelectChange}
-          label="Movie Name"
-          placeholder="Select a movie"
-          data={movieList.map((movie) => ({ label: movie, value: movie }))}
-        />
-        <br></br>
-        <Button type="submit">Submit</Button>
-      </form>
-      {recommendedMovies.length > 0 ? (
-        <SimpleGrid cols={3} spacing={10}>
-          {recommendedMovies.map((movie, index) => (
-            <Card
-              key={index}
-              shadow="sm"
-              padding="lg"
-              radius="md"
-              withBorder
-              w={300}
-            >
-              <Card.Section>
-                <Image src={movie.posterUrl} alt={movie.name} height={400} />
-              </Card.Section>
+    <Box
+      sx={(theme) => ({
+        backgroundColor:
+          theme.colorScheme === "dark"
+            ? theme.colors.dark[6]
+            : theme.colors.gray[0],
+        textAlign: "center",
+        padding: theme.spacing.xl,
+        borderRadius: theme.radius.md,
+        cursor: "pointer",
 
-              <Text size="sm" color="orange" fw={500}>
-                {movie.name}
-              </Text>
-            </Card>
-          ))}
-        </SimpleGrid>
-      ) : (
-        <p>No recommended movies to display.</p>
-      )}
-    </div>
+        "&:hover": {
+          backgroundColor:
+            theme.colorScheme === "dark"
+              ? theme.colors.dark[5]
+              : theme.colors.gray[1],
+        },
+      })}
+    >
+      <div>
+        <form onSubmit={handleFormSubmit}>
+          <Select
+            value={movieName}
+            searchable
+            onChange={handleSelectChange}
+            label="Movie Name"
+            placeholder="Select a movie"
+            data={movieList.map((movie) => ({ label: movie, value: movie }))}
+            invalid={movieName === ""}
+            error={movieName === "" ? "Please select a movie" : null}
+          />
+          <Button
+            type="submit"
+            variant="outline"
+            color="blue"
+            disabled={loading}
+          >
+            Submit
+          </Button>
+        </form>
+        {showTitle && (
+          <Title
+            order={3}
+            weight={700}
+            align="center"
+            style={{ marginTop: "2rem" }}
+          >
+            Recommended Movies
+          </Title>
+        )}
+        {loading ? (
+          <Loader size="lg" style={{ marginTop: "2rem" }} />
+        ) : recommendedMovies.length > 0 ? (
+          <SimpleGrid cols={3} spacing={20} style={{ marginTop: "2rem" }}>
+            {recommendedMovies.map((movie, index) => (
+              <Card
+                key={index}
+                shadow="sm"
+                padding="lg"
+                radius="md"
+                withBorder
+                w={300}
+              >
+                <Card.Section>
+                  <Image
+                    src={movie.posterUrl}
+                    alt={movie.name}
+                    height={400}
+                    style={{ borderRadius: "8px" }}
+                  />
+                </Card.Section>
+                <Text
+                  size="lg"
+                  weight={700}
+                  align="center"
+                  style={{ marginTop: "1rem" }}
+                >
+                  {movie.name}
+                </Text>
+              </Card>
+            ))}
+          </SimpleGrid>
+        ) : (
+          <Text align="center" mt={20} size="md" color="gray">
+            No recommended movies to display.
+          </Text>
+        )}
+      </div>
+    </Box>
   );
 }
 
