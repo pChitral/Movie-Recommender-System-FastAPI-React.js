@@ -11,6 +11,7 @@ import {
   Title,
   Loader,
   Box,
+  Divider,
 } from "@mantine/core";
 
 function MovieRecommendations() {
@@ -85,17 +86,19 @@ function MovieRecommendations() {
             value={movieName}
             searchable
             onChange={handleSelectChange}
-            label="Movie Name"
+            label="Select a Movie Name"
             placeholder="Select a movie"
             data={movieList.map((movie) => ({ label: movie, value: movie }))}
             invalid={movieName === ""}
             error={movieName === "" ? "Please select a movie" : null}
           />
+          <br></br>
           <Button
             type="submit"
             variant="outline"
             color="blue"
             disabled={loading}
+            padding={10}
           >
             Submit
           </Button>
