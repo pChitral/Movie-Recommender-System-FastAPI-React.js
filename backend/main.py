@@ -26,8 +26,8 @@ app.add_middleware(
 
 
 def load_data():
-    movies = pickle.load(open('movie_list.pkl', 'rb'))
-    similarity = pickle.load(open('similarity.pkl', 'rb'))
+    movies = pd.read_pickle('movie_list.pkl')
+    similarity = pd.read_pickle('similarity.pkl')
     return movies, similarity
 
 
