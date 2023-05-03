@@ -3,10 +3,11 @@ import pickle
 import requests
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import pandas as pd
 
 app = FastAPI()
 
-movies = pickle.load(open('movie_list.pkl', 'rb'))
+movies = pd.read_pickle('movie_list.pkl', 'rb')
 
 # Set up CORS
 origins = [
