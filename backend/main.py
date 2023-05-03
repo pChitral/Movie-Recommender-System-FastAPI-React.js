@@ -7,7 +7,7 @@ import pandas as pd
 
 app = FastAPI()
 
-movies = pd.read_pickle('movie_list.pkl', 'rb')
+movies = pd.read_pickle('movie_list.pkl')
 
 # Set up CORS
 origins = [
