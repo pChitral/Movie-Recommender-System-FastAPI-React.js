@@ -56,7 +56,9 @@ The following Python packages are required to run the backend:
 - scikit-learn: A library for machine learning.
   To install these dependencies, run the following command:
 
-`pip install -r backend/requirements.txt`
+```python
+pip install -r backend/requirements.txt
+```
 
 ## Running the Backend
 
