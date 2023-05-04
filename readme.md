@@ -64,9 +64,9 @@ pip install -r backend/requirements.txt
 
 To run the backend, navigate to the backend directory and run the following command:
 
-  ```python
-  uvicorn main:app --reload
-  ```
+```python
+uvicorn main:app --reload
+```
 
 This will start the server at `http://localhost:8000`.
 
@@ -85,7 +85,7 @@ The frontend is built using Vue.js, a popular JavaScript framework for building 
 - src/App.js: Contains the React.js component for the web page.
 - src/index.js: Contains the JavaScript code to bootstrap the React.js app.
 - MovieRecommendations.js: Contains the code to communicate with my frontend and deals with the logic of how components will be rendered.
-- api/api.js: Contains the code to talk with my APIs created in FastAPI and helps my frontend communicate with the backend. 
+- api/api.js: Contains the code to talk with my APIs created in FastAPI and helps my frontend communicate with the backend.
 - package.json: Contains the list of dependencies and build scripts for the project.
 
 ## Dependencies
@@ -101,6 +101,7 @@ To install these dependencies, run the following command:
 cd frontend
 npm install
 ```
+
 ## Running the Frontend
 
 To run the frontend, navigate to the frontend directory and run the following command:
