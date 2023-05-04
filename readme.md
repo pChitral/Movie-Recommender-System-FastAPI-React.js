@@ -62,7 +62,7 @@ The following Python packages are required to run the backend:
 
 To run the backend, navigate to the backend directory and run the following command:
 
-`uvicorn main:app --reload`
+  uvicorn main:app --reload
 
 This will start the server at `http://localhost:8000`.
 
