@@ -82,8 +82,10 @@ The following API endpoints are available:
 The frontend is built using Vue.js, a popular JavaScript framework for building user interfaces. The following files are present in the frontend directory:
 
 - public/index.html: Contains the HTML markup for the web page.
-- src/App.vue: Contains the Vue.js component for the web page.
-- src/main.js: Contains the JavaScript code to bootstrap the Vue.js app.
+- src/App.js: Contains the React.js component for the web page.
+- src/index.js: Contains the JavaScript code to bootstrap the React.js app.
+- MovieRecommendations.js: Contains the code to communicate with my frontend and deals with the logic of how components will be rendered.
+- api/api.js: Contains the code to talk with my APIs created in FastAPI and helps my frontend communicate with the backend. 
 - package.json: Contains the list of dependencies and build scripts for the project.
 
 ## Dependencies
