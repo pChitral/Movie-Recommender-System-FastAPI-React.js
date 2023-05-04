@@ -2,6 +2,14 @@
 
 This is a simple movie recommender system built using Python and the FastAPI web framework. The system is based on content-based filtering and recommends movies similar to the one provided by the user.
 
+# Video Demo
+
+
+Uploading Movie-Recommendation-Demo.mov…
+
+
+
+
 # Folder Structure
 
 The project has the following folder structure:
