@@ -10,12 +10,14 @@ The project has the following folder structure:
 .
 ├── backend
 │   ├── README.md
-│   ├── app.py
 │   ├── main.py
 │   ├── movie_list.pkl
 │   ├── similarity.pkl
 │   ├── similarity.pkl.gz
 │   └── requirements.txt
+│   └── model.ipynb
+│   └── data
+
 ├── frontend
 │   ├── README.md
 │   ├── node_modules
