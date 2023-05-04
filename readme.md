@@ -102,7 +102,7 @@ npm install
 To run the frontend, navigate to the frontend directory and run the following command:
 
 ```python
-npm run serve
+npm start
 ```
 
 This will start the development server at `http://localhost:3000`.
