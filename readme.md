@@ -5,7 +5,11 @@ This is a simple movie recommender system built using Python and the FastAPI web
 # Video Demo
 
 
-Uploading Movie-Recommendation-Demo.mov…
+
+
+https://user-images.githubusercontent.com/69043137/236117414-9b835116-3d1c-464d-a715-e87f178e52ce.mov
+
+
 
 
 
