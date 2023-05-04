@@ -2,6 +2,18 @@
 
 This is a simple movie recommender system built using Python and the FastAPI web framework. The system is based on content-based filtering and recommends movies similar to the one provided by the user.
 
+# Video Demo
+
+
+
+
+https://user-images.githubusercontent.com/69043137/236117414-9b835116-3d1c-464d-a715-e87f178e52ce.mov
+
+
+
+
+
+
 # Folder Structure
 
 The project has the following folder structure:
@@ -64,7 +76,9 @@ pip install -r backend/requirements.txt
 
 To run the backend, navigate to the backend directory and run the following command:
 
-  uvicorn main:app --reload
+```python
+uvicorn main:app --reload
+```
 
 This will start the server at `http://localhost:8000`.
 
@@ -77,29 +91,35 @@ The following API endpoints are available:
 
 # Frontend
 
-The frontend is built using Vue.js, a popular JavaScript framework for building user interfaces. The following files are present in the frontend directory:
+The frontend is built using React.js, a popular JavaScript framework for building user interfaces. The following files are present in the frontend directory:
 
 - public/index.html: Contains the HTML markup for the web page.
-- src/App.vue: Contains the Vue.js component for the web page.
-- src/main.js: Contains the JavaScript code to bootstrap the Vue.js app.
+- src/App.js: Contains the React.js component for the web page.
+- src/index.js: Contains the JavaScript code to bootstrap the React.js app.
+- MovieRecommendations.js: Contains the code to communicate with my frontend and deals with the logic of how components will be rendered.
+- api/api.js: Contains the code to talk with my APIs created in FastAPI and helps my frontend communicate with the backend.
 - package.json: Contains the list of dependencies and build scripts for the project.
 
 ## Dependencies
 
 The following packages are required to run the frontend:
 
-- vue: A JavaScript framework for building user interfaces.
+- React: A JavaScript framework for building user interfaces.
 - axios: A library for making HTTP requests.
 
 To install these dependencies, run the following command:
 
-`cd frontend
-npm install`
+```javascript
+cd frontend
+npm install
+```
 
 ## Running the Frontend
 
 To run the frontend, navigate to the frontend directory and run the following command:
 
-`npm run serve`
+```python
+npm start
+```
 
 This will start the development server at `http://localhost:3000`.
