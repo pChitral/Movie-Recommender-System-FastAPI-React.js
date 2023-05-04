@@ -64,7 +64,9 @@ pip install -r backend/requirements.txt
 
 To run the backend, navigate to the backend directory and run the following command:
 
+  ```python
   uvicorn main:app --reload
+  ```
 
 This will start the server at `http://localhost:8000`.
 
