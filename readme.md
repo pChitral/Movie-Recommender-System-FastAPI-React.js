@@ -87,7 +87,7 @@ The following API endpoints are available:
 
 # Frontend
 
-The frontend is built using Vue.js, a popular JavaScript framework for building user interfaces. The following files are present in the frontend directory:
+The frontend is built using React.js, a popular JavaScript framework for building user interfaces. The following files are present in the frontend directory:
 
 - public/index.html: Contains the HTML markup for the web page.
 - src/App.js: Contains the React.js component for the web page.
@@ -100,7 +100,7 @@ The frontend is built using Vue.js, a popular JavaScript framework for building 
 
 The following packages are required to run the frontend:
 
-- vue: A JavaScript framework for building user interfaces.
+- React: A JavaScript framework for building user interfaces.
 - axios: A library for making HTTP requests.
 
 To install these dependencies, run the following command:
