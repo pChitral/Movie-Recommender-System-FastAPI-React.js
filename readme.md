@@ -93,13 +93,16 @@ The following packages are required to run the frontend:
 
 To install these dependencies, run the following command:
 
-`cd frontend
-npm install`
-
+```javascript
+cd frontend
+npm install
+```
 ## Running the Frontend
 
 To run the frontend, navigate to the frontend directory and run the following command:
 
-`npm run serve`
+```python
+npm run serve
+```
 
 This will start the development server at `http://localhost:3000`.
